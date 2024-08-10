@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from skimage.feature import graycoprops, graycomatrix
 from PIL import Image
 
-# from skimage.measure import regionprops, regionprops_table
 import numpy as np
 import os
 import pickle
@@ -61,18 +60,13 @@ def handle_predict():
     if file:
         try:
             img = Image.open(io.BytesIO(file.read())).convert("L")
-
-            # Convert image to NumPy array
             img_array = np.array(img)
-
-            # Process the image array here (e.g., resize, convert to grayscale, etc.)
 
             return jsonify({"success": True, "prediction": predict(img_array)}), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
 
-# driver function
 if __name__ == "__main__":
     app.run(debug=True)
 
