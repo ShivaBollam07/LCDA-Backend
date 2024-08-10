@@ -10,8 +10,10 @@ import os
 import pickle
 
 load_dotenv(override=True)
-app = Flask(__name__)
 modelname = os.getenv("MODEL")
+req_features = os.getenv("FEATURES")
+
+app = Flask(__name__)
 
 featuresmap = {
     "c": "contrast",
@@ -22,7 +24,6 @@ featuresmap = {
     "a": "ASM",
 }
 
-req_features = os.getenv("FEATURES")
 
 properties = [featuresmap[i] for i in req_features]
 model = pickle.load(open("./models/" + modelname, "rb"))
