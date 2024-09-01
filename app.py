@@ -41,9 +41,9 @@ def predict(image: np.ndarray):
     features = get_image_feature_vec(image)
     pred  =  model.predict([features])
     if pred[0] == 1:
-        return "Infected"
+        return "Leaf Curl Disease"
     else:
-        return "Not Infected"
+        return "Healthy"
 
 
 
@@ -51,12 +51,12 @@ def predict(image: np.ndarray):
 @app.route("/predict", methods=["POST"])
 def handle_predict():
     if "image" not in request.files:
-        return jsonify({"error": "1No image part in the request"}), 400
+        return jsonify({"error": "No image part in the request"}), 400
 
     file = request.files["image"]
 
     if file.filename == "":
-        return jsonify({"error": "2No image selected"}), 400
+        return jsonify({"error": "No image selected"}), 400
 
     if file:
         try:
