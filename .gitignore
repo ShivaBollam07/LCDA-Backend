@@ -1,0 +1,25 @@
+# Common Python project files
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+*.egg
+*.so
+
+# Virtual environment files
+env/
+venv/
+requirements.txt
+
+# Other common files
+Thumbs.db
+ehthumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+*.suo
+*.nsassets
+*.sdf
+models/
